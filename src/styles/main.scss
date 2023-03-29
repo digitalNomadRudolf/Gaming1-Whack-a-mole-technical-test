@@ -1,0 +1,16 @@
+@import "./reset.scss";
+@import "../components/MoleGrid/MoleGrid.scss";
+@import "../components/CustomCursor/CustomCursor.scss";
+@import "../components/ScoreBoard/ScoreBoard.scss";
+@import "../components/ScoreBoard/Timer/Timer.scss";
+
+body,
+html,
+#root,
+.App {
+  height: 100%;
+}
+
+* {
+  cursor: none;
+}
