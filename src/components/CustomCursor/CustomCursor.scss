@@ -1,0 +1,13 @@
+.hammer-cursor {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-60%, -50%) rotate(20deg);
+  pointer-events: none;
+  cursor: none;
+  z-index: 9999;
+
+  &.active {
+    transform: translate(-60%, -50%) rotate(-45deg);
+  }
+}
