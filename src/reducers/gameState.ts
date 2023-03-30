@@ -3,13 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 interface WAMGameState {
   name: string;
   score: number;
-  showModal: boolean;
 }
 
 const initialState: WAMGameState = {
   name: "",
   score: 0,
-  showModal: false,
 };
 
 export const gameSlice = createSlice({
