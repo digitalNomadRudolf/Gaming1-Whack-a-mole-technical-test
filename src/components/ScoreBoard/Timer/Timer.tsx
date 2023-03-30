@@ -1,4 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { store } from "../../../app/store";
 
 interface TimerProps {
   handleTimeUp: () => void;
@@ -8,6 +10,7 @@ export default function Timer({ handleTimeUp }: TimerProps) {
   const INITIAL_COUNT = 120;
   const [secondsRemaining, setSecondsRemaining] =
     useState<number>(INITIAL_COUNT);
+  const dispatch = useDispatch();
 
   const secondsToDisplay = secondsRemaining % 60;
   const minutesRemaining = (secondsRemaining - secondsToDisplay) / 60;
@@ -20,9 +23,7 @@ export default function Timer({ handleTimeUp }: TimerProps) {
     }
 
     const timerInterval = setInterval(() => {
-      if (secondsRemaining > 0) {
-        setSecondsRemaining(secondsRemaining - 1);
-      }
+      setSecondsRemaining((secondsRemaining) => secondsRemaining - 1);
     }, 1000);
 
     return () => {
