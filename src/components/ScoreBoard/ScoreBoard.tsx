@@ -1,5 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { useDispatch } from "react-redux";
 import { store } from "../../app/store";
+import { setScore } from "../../reducers/gameState";
+import LeaderBoardModal from "../LeaderBoard/LeaderBoardModal";
 import Timer from "./Timer/Timer";
 
 function Name() {
@@ -15,16 +18,19 @@ function Name() {
 
 export default function ScoreBoard() {
   // Get score from store
-  const [gameScore, setGameScore] = useState<number>(
-    store.getState().game.score
-  );
+  const [gameScore, setGameScore] = useState(store.getState().game.score);
   // Show LeaderBoard modal on timeup
   const [showLBModal, setShowLBModal] = useState(false);
+  const dispatch = useDispatch();
 
-  function handleTimeUp() {
-    console.log("Timer ran out!");
+  // Prevent unnecessary rerenders with useCallback
+  const handleTimeUp = useCallback(() => {
     setShowLBModal(true);
-  }
+  }, []);
+
+  const closeModal = useCallback(() => {
+    setShowLBModal(false);
+  }, [showLBModal]);
 
   useEffect(() => {
     store.subscribe(() => {
@@ -37,6 +43,12 @@ export default function ScoreBoard() {
       <Name />
       <h1>Score: {gameScore}</h1>
       <Timer handleTimeUp={handleTimeUp} />
+      {showLBModal && (
+        <LeaderBoardModal
+          closeModal={closeModal}
+          resetScore={() => dispatch(setScore(0))}
+        />
+      )}
     </div>
   );
 }
