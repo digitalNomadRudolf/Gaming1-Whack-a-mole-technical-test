@@ -1,0 +1,38 @@
+.leaderboard-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 40%;
+  background: saddlebrown;
+  transform: translate(-50%, -50%);
+  border: 3px solid black;
+  text-align: center;
+  z-index: 10000;
+  cursor: pointer;
+
+  &-title {
+    padding: 25px;
+    background: yellowgreen;
+    font-size: 21px;
+  }
+
+  &-players {
+    font-size: 20px;
+  }
+}
+
+.leaderboard-entry {
+  padding: 25px;
+}
+
+.close-leaderboard {
+  background: yellowgreen;
+  margin: 0;
+  padding: 20px;
+  font-size: 25px;
+  cursor: pointer;
+
+  &:hover {
+    background: red;
+  }
+}
