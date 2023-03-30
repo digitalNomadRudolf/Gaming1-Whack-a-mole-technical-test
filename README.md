@@ -31,4 +31,4 @@ PORT=3001
 
 ### Tests -
 
-1. I didn't have time to write tests
+1. I didn't have enough time to write tests
